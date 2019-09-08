@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.gahon.sso.server.dao.TokenDao">
+    <resultMap id="token_user" type="com.gahon.sso.server.model.vo.TokenUserVo">
+        <id property="id" column="id"/>
+        <result property="uid" column="uid"/>
+        <result property="token" column="token"/>
+        <result property="createTime" column="create_time"/>
+        <result property="disable" column="disable"/>
+        <result property="expireMinute" column="expire_minute"/>
+        <result property="updateTime" column="update_time"/>
+        <association property="user" javaType="com.gahon.sso.server.model.User" column="uid"
+                     select="com.gahon.sso.server.dao.UserDao.getUserById"/>
+    </resultMap>
+    <select id="getTokenUser" resultMap="token_user">
+        SELECT id, uid, token, expire_minute, disable, update_time, create_time
+        FROM sso.token
+        WHERE token=#{token} and disable=0
+    </select>
+    <update id="disableToken">
+        UPDATE sso.token SET disable=1 WHERE token=#{token}
+    </update>
+    <update id="updateTokenTime">
+        UPDATE sso.token SET update_time=#{update_time} WHERE id = #{id}
+    </update>
+</mapper>
