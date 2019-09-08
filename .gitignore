@@ -1,0 +1,26 @@
+# Created by .ignore support plugin (hsz.mobi)
+### Maven template
+target/
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+pom.xml.next
+release.properties
+dependency-reduced-pom.xml
+buildNumber.properties
+.mvn/timing.properties
+# https://github.com/takari/maven-wrapper#usage-without-binary-jar
+.mvn/wrapper/maven-wrapper.jar
+
+sso-client/.mvn/
+sso-client/mvnw
+sso-client/mvnw.cmd
+
+sso-server/.mvn/
+sso-server/mvnw
+sso-server/mvnw.cmd
+
+sso-test/.mvn/
+sso-test/mvnw
+sso-test/mvnw.cmd
+
